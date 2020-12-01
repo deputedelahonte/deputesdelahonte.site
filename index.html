@@ -173,17 +173,11 @@ L’utilisateur est informé que le site ne gère, ni ne stock quelques données
     xobj.send(null);  
  }
  
-     var templateStart  = '<div class="card"><div class="card-image"><figure class="image"><img src="';
-     var templateEnd = '"></figure></div></div></div>';
-
  function createImage(chunk, parent) {
         var col = document.getElementById(parent);
         var temptableHolder="";
         for(var k in chunk){
-        console.log(chunk[k].smallwebp);
-            temptableHolder += templateStart;
-            temptableHolder += chunk[k].smallwebp;
-            temptableHolder += templateEnd;
+            temptableHolder += `<div class="card"><div class="card-image"><figure class="image"><picture><source type="image/webp" srcset="${chunk[k].smallwebp}"><source type="image/jpeg" srcset="${chunk[k].smalljpg}"><img src="${chunk[k].smalljpg}" title="${chunk[k].jpg}"></picture></figure></div></div></div>`;
         }
         col.innerHTML  = temptableHolder ;
  }
